@@ -1,0 +1,56 @@
+experiment_name: ToA_only
+
+
+model:
+  _target_: models.SwinUnet.Swin2D
+  learning_rate: 1e-4
+  swin:
+    _target_: modules.swin_unet.SwinUnet
+    img_size: 256
+    patch_size: 4
+    in_chans: 15 # 10 RSS + 5 Tx, Rx coordinates 
+    embed_dim: 48
+    depths: [2, 2, 6, 2]
+    decoder_depths: [2, 2, 6, 2]
+    num_heads: [3, 6, 12, 24]
+    window_size: 8
+    mlp_ratio: 4.
+    qkv_bias: True   
+    qk_scale: null
+    ape: False
+    patch_norm: True
+    final_upsample: "identity" 
+
+train_dataloader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 160
+  num_workers: 12
+  pin_memory: True
+  dataset:
+    _target_: modules.loader_toa_only.locDL  
+    phase: 'train'
+    dir_dataset: /home/hu/uwlc/dataset/RadioLocSeer/gain/
+    cityMap: False
+    carsMap: False
+    simulation: 'DPM'
+    TxMaps: True
+    return_dict: True
+  
+
+val_dataloader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 160
+  num_workers: 12
+  pin_memory: True
+  dataset:
+    _target_: modules.loader_toa_only.locDL  
+    phase: 'val'
+    dir_dataset: /home/hu/uwlc/dataset/RadioLocSeer/gain/
+    cityMap: False
+    carsMap: False
+    simulation: 'DPM'
+    TxMaps: True
+    return_dict: True
+  
+resume_path: checkpoints/swinunet-ToA_only.ckpt
+gpus: [2]
