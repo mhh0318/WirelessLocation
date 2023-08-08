@@ -8,10 +8,10 @@ model:
     _target_: modules.swin_unet.SwinUnet
     img_size: 256
     patch_size: 4
-    in_chans: 15 # 10 RSS + 5 Tx, Rx coordinates 
-    embed_dim: 48
-    depths: [2, 2, 6, 2]
-    decoder_depths: [2, 2, 6, 2]
+    in_chans: 16 # 10 RSS + 5 Tx, Rx coordinates 
+    embed_dim: 96
+    depths: [2, 2, 18, 2]
+    decoder_depths: [2, 2, 18, 2]
     num_heads: [3, 6, 12, 24]
     window_size: 8
     mlp_ratio: 4.
@@ -23,14 +23,14 @@ model:
 
 train_dataloader:
   _target_: torch.utils.data.DataLoader
-  batch_size: 160
+  batch_size: 60
   num_workers: 12
   pin_memory: True
   dataset:
     _target_: modules.loader.locDL  
     phase: 'train'
     dir_dataset: /home/hu/uwlc/dataset/RadioLocSeer/gain/
-    cityMap: False
+    cityMap: True
     carsMap: False
     simulation: 'DPM'
     TxMaps: True
@@ -39,18 +39,21 @@ train_dataloader:
 
 val_dataloader:
   _target_: torch.utils.data.DataLoader
-  batch_size: 160
+  batch_size: 60
   num_workers: 12
   pin_memory: True
   dataset:
     _target_: modules.loader.locDL  
     phase: 'val'
     dir_dataset: /home/hu/uwlc/dataset/RadioLocSeer/gain/
-    cityMap: False
+    cityMap: True
     carsMap: False
     simulation: 'DPM'
     TxMaps: True
     return_dict: True
   
-resume_path: checkpoints/swinunet-RSS_only.ckpt
-gpus: [0]
+# resume_path: checkpoints/swinunet-RSS_only.ckpt
+# gpus: [0]
+
+resume_path: null
+gpus: null

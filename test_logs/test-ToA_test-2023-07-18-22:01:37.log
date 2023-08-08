@@ -1,0 +1,5 @@
+2023-07-18 22:01:44,973 - __main__ - INFO - Loading checkpoint from swinunet-RSS_noisy_ToA_without_citymap-epoch=52-val_loss=4.96
+2023-07-18 22:01:45,026 - __main__ - INFO - Start test
+2023-07-18 22:02:14,268 - __main__ - INFO - loss for batch index-0: 3.6355531215667725
+2023-07-18 22:02:19,635 - __main__ - INFO - loss for batch index-1: 3.529629945755005
+2023-07-18 22:02:24,605 - __main__ - INFO - loss for batch index-2: 3.4349007606506348

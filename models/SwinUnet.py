@@ -28,7 +28,8 @@ class Swin2D(pl.LightningModule):
         self.act = torch.nn.GELU()
         self.learning_rate = learning_rate
 
-        self.predict = TokenToCoordinate(48, 64**2)
+        # self.predict = TokenToCoordinate(48, 64**2)
+        self.predict = TokenToCoordinate(96, 64**2)
 
 
     def get_input(self, batch):
@@ -94,5 +95,5 @@ class Swin2D(pl.LightningModule):
             coor_real = coor*255.
             y_real = y*255.
         loss = self.loss(coor_real, y_real)
-        self.log('val_loss', loss)
+        self.log('val_loss', loss, on_step=True, on_epoch=True, prog_bar=True, logger=True)
         return loss

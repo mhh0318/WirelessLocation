@@ -62,3 +62,5 @@ Here is a summary of evaluation loss (RMSE) meter:
 password : default 
 
 [Related Project Page](https://radiomapseer.github.io/LocUNet.html)
+
+This project is heavily based on [SwinUNet](https://github.com/HuCaoFighting/Swin-Unet)

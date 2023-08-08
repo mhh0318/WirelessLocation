@@ -41,7 +41,7 @@ def calc_loss_test(pred, target):
     loss = official_loss(pred, target)# *256*256
     return loss
 
-@hydra.main(version_base=None, config_path="configs", config_name="ToA_only.yaml")
+@hydra.main(version_base=None, config_path="configs", config_name="RSS_only_final_noise.yaml")
 # @hydra.main(version_base=None)
 def eval(cfg : DictConfig) -> None:
     dstr = datetime.datetime.today().strftime('%Y-%m-%d-%H:%M:%S')

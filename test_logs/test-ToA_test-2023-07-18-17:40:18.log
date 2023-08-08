@@ -1,0 +1,17 @@
+2023-07-18 17:40:25,207 - __main__ - INFO - Loading checkpoint from swinunet-RSS_noisy_ToA_without_citymap-epoch=52-val_loss=4.96
+2023-07-18 17:40:25,260 - __main__ - INFO - Start test
+2023-07-18 17:40:34,846 - __main__ - INFO - loss for batch index-0: 39.046043395996094
+2023-07-18 17:40:35,431 - __main__ - INFO - loss for batch index-1: 38.20532989501953
+2023-07-18 17:40:36,018 - __main__ - INFO - loss for batch index-2: 39.61017990112305
+2023-07-18 17:40:36,643 - __main__ - INFO - loss for batch index-3: 36.55891036987305
+2023-07-18 17:40:37,356 - __main__ - INFO - loss for batch index-4: 38.276588439941406
+2023-07-18 17:40:37,935 - __main__ - INFO - loss for batch index-5: 38.95724105834961
+2023-07-18 17:40:38,514 - __main__ - INFO - loss for batch index-6: 38.18258285522461
+2023-07-18 17:40:39,101 - __main__ - INFO - loss for batch index-7: 39.64354705810547
+2023-07-18 17:40:39,674 - __main__ - INFO - loss for batch index-8: 36.408973693847656
+2023-07-18 17:40:40,268 - __main__ - INFO - loss for batch index-9: 38.367919921875
+2023-07-18 17:40:40,838 - __main__ - INFO - loss for batch index-10: 38.88885498046875
+2023-07-18 17:40:41,450 - __main__ - INFO - loss for batch index-11: 38.194313049316406
+2023-07-18 17:40:42,107 - __main__ - INFO - loss for batch index-12: 39.56935119628906
+2023-07-18 17:40:42,700 - __main__ - INFO - loss for batch index-13: 36.44994354248047
+2023-07-18 17:40:43,304 - __main__ - INFO - loss for batch index-14: 38.44797897338867

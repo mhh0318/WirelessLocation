@@ -1,4 +1,4 @@
-experiment_name: RSS_estimate_ToA_with_citymap
+experiment_name: ToA_test_toaonly
 
 
 model:
@@ -8,10 +8,10 @@ model:
     _target_: modules.swin_unet.SwinUnet
     img_size: 256
     patch_size: 4
-    in_chans: 26 # 10 RSS + 10 ToA + 5 Tx, Rx coordinates + 1 CityMap
-    embed_dim: 96
-    depths: [2, 2, 18, 2]
-    decoder_depths: [2, 2, 18, 2]
+    in_chans: 15 # 10 RSS + 5 Tx, Rx coordinates 
+    embed_dim: 48
+    depths: [2, 2, 6, 2]
+    decoder_depths: [2, 2, 6, 2]
     num_heads: [3, 6, 12, 24]
     window_size: 8
     mlp_ratio: 4.
@@ -23,39 +23,33 @@ model:
 
 train_dataloader:
   _target_: torch.utils.data.DataLoader
-  batch_size: 96
+  batch_size: 160
   num_workers: 12
   pin_memory: True
   dataset:
-    _target_: modules.loader_toa.locDL  
+    _target_: modules.loader_toa_test.locDL  
     phase: 'train'
-    dir_dataset: /home/hu/uwlc/dataset/RadioLocSeer/gain/
-    cityMap: True
+    cityMap: False
     carsMap: False
     simulation: 'DPM'
     TxMaps: True
     return_dict: True
-    rss_noise_flag: False
   
 
 val_dataloader:
   _target_: torch.utils.data.DataLoader
-  batch_size: 96
+  batch_size: 160
   num_workers: 12
   pin_memory: True
   dataset:
-    _target_: modules.loader_toa.locDL  
-    phase: 'val'
-    dir_dataset: /home/hu/uwlc/dataset/RadioLocSeer/gain/
-    cityMap: True
+    _target_: modules.loader_toa_only_noisy.locDL  
+    phase: 'test'
+    dir_dataset: /home/hu/uwlc/dataset/ToATest
+    cityMap: False
     carsMap: False
     simulation: 'DPM'
     TxMaps: True
     return_dict: True
-    rss_noise_flag: False
-
   
-# resume_path: checkpoints/swinunet-ToA-RSSEstimate-with-citymap.ckpt
-# gpus: [1]
-resume_path: null
-gpus: null
+resume_path: /home/hu/uwlc/logs/swinunet-ToA_only-2023-07-12-11:42:22/swinunet-ToA_only-epoch=17-val_loss=6.92.ckpt
+gpus: [2]

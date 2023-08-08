@@ -1,0 +1,2 @@
+2023-07-18 17:23:56,804 - __main__ - INFO - Loading checkpoint from swinunet-RSS_noisy_ToA_without_citymap-epoch=52-val_loss=4.96
+2023-07-18 17:23:56,856 - __main__ - INFO - Start test
